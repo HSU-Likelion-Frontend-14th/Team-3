@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
+      background-color: #F3F5FF; /* 전체 배경색 */
+      position: relative;
+      width: 1920px;             /* 피그마 기준 전체 너비 */
+      margin: 0 auto;
+    }
+
+    /* NAV(상단 흰색 바)_ Rectangle 1: width 1920, height 120, top 0 */
+    .nav {
+      position: absolute;
+      width: 1920px;
+      height: 120px;           
+      left: calc(50% - 1920px/2);
+      top: 0px;
+      background: #FFFFFF;    
+    }
+
+    /* 로고 박스: width 340, height 62, left 370, top 29 */
+    .logo-box {
+      position: absolute;
+      width: 340px;             
+      height: 62px;              
+      left: 370px;               
+      top: 29px;                 /* 로고 위 마진 */
+    }
+    .logo-box img {
+      width: 274px;              /* PORTFOLIO. SVG 너비 */
+      height: 32px;              /* PORTFOLIO. SVG 높이 */
+      margin-top: 15px;
+      margin-left: 33px;
+    }
+
+    /* 네비 메뉴: Frame3 width 543, height 58, left 1038, top 31 */
+    .nav-links {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      padding: 0px;
+      gap: 32px;                 /* 메뉴 항목 사이 간격 */
+      position: absolute;
+      width: 543px;              
+      height: 58px;              
+      left: 1038px;              
+      top: 31px;                 /* 메뉴 위 마진 */
+      list-style: none;
+    }
+    .nav-links li a {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 24px;        /* 메뉴 항목 안쪽 여백 */
+      text-decoration: none;
+      font-family: 'Inter';
+      font-weight: 500;          
+      font-size: 28px;          
+      line-height: 34px;
+      color: #000000;            
+      white-space: nowrap;
+    }
+    .nav-links li a:hover { color: #4A86FF; }
+
+    /* HERO(파란 배경 섹션)_ Rectangle 2: width 1920, height 800, top 120 */
+    .hero {
+      position: absolute;
+      width: 1920px;
+      height: 800px;             
+      left: calc(50% - 1920px/2);
+      top: 120px;                /* nav 아래 시작 */
+      background: #4A86FF;      
+    }
+
+    /* 히어로 텍스트: width 1033, height 360, top 340 */
+    .hero-text {
+      position: absolute;
+      width: 1033px;             /* 텍스트 박스 너비 */
+      height: 360px;             /* 텍스트 박스 높이 */
+      left: calc(50% - 1033px/2 + 0.5px);
+      top: 340px;                /* 히어로 내부 기준 위치, 전체 기준: 120+220=340 */
+      font-family: 'Inter';
+      font-weight: 800;          
+      font-size: 65px;          
+      line-height: 150%;        
+      text-align: center;
+      color: #FFFFFF;          
+    }
+
+    /* 배경 섹션 (ABOUT + HOBBY 영역)_ Rectangle 11: width 1920, height 1765, top 920 */
+    .content-bg {
+      position: absolute;
+      width: 1920px;
+      height: 1765px;            /* 콘텐츠 영역 전체 높이 */
+      left: calc(50% - 1920px/2);
+      top: 920px;
+      background: #F3F5FF;      
+    }
+
+    /* ABOUT 제목: width 254, height 85, top 980 */
+    .about-title {
+      position: absolute;
+      width: 254px;              
+      height: 85px;             
+      left: calc(50% - 254px/2);
+      top: 980px;                /* 전체 기준 위치 */
+      font-family: 'Inter';
+      font-weight: 800;          
+      font-size: 70px;           
+      line-height: 85px;
+      text-align: center;
+      color: #4A86FF;            
+    }
+
+    /* 프로필 카드_ Rectangle 4: width 380, height 498, left 370, top 1124 */
+    .profile-card {
+      position: absolute;
+      width: 380px;             
+      height: 498px;            
+      left: 370px;               
+      top: 1124px;              
+      background: #FFFFFF;       
+      border: 1px solid #EBEDF8; 
+      border-radius: 16px;       
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 30px;         /* 카드 상단 안쪽 여백 */
+    }
+
+    /* 프로필 사진: 196.08 x 200, 왼쪽 마진 92, 오른쪽 91.92 */
+    .profile-avatar {
+      width: 196px;             
+      height: 200px;             
+      border-radius: 50%;       
+      background: #D8DAF0;       /* 사진 없을 때 배경색 */
+      margin-left: 92px;         
+      margin-right: 92px;       
+      flex-shrink: 0;
+    }
+
+    .profile-name {
+      font-size: 20px;           /* 이름 글자 크기 */
+      font-weight: 700;
+      color: #5b6ef5;           
+      margin-top: 16px;          /* 사진과 이름 사이 간격 */
+      margin-bottom: 16px;       /* 이름과 연락처 사이 간격 */
+    }
+
+    .profile-info {
+      list-style: none;
+      text-align: left;
+      font-size: 13px;           /* 연락처 글자 크기 */
+      color: #555;               
+      line-height: 2;            /* 연락처 줄 간격 */
+      padding: 0 24px;
+      width: 100%;
+    }
+    .profile-info li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;                  /* 아이콘과 텍스트 사이 간격 */
+    }
+
+    /* ABOUT 정보 영역 */
+    .about-info-area {
+      position: absolute;
+      left: 790px;               /* 프로필카드(370+380+40) 오른쪽 */
+      top: 1124px;
+      width: 760px;
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* EDUCATION/WORK 왼쪽, SKILLS/ACTIVITIES 오른쪽 */
+      gap: 60px 80px;
+    }
+
+	/* 소제목 */
+    .about-info h3 {
+      font-family: 'Inter';
+      font-weight: 800;          
+      font-size: 22px;           
+      color: #222;
+      margin-bottom: 12px;       
+    }
+
+	/* 내용 */
+    .about-info p {
+      font-size: 16px;           
+      color: #444;               
+      line-height: 1.8;          
+    }
+
+    /* HOBBY 제목: width 253, height 85, top 1822 */
+    .hobby-title {
+      position: absolute;
+      width: 253px;              
+      height: 85px;              
+      left: calc(50% - 253px/2 + 0.5px);
+      top: 1822px;               /* 전체 기준 위치 */
+      font-family: 'Inter';
+      font-weight: 800;          
+      font-size: 70px;           
+      line-height: 85px;
+      text-align: center;
+      color: #4A86FF;            
+    }
+
+    /* HOBBY 3개
+       Rectangle 14: width 380, height 377, left 370,  top 1966
+       Rectangle 15: width 380, height 377, left 770,  top 1966
+       Rectangle 16: width 380, height 377, left 1170, top 1966 */
+    .hobby-card {
+      position: absolute;
+      width: 380px;              
+      height: 377px;             
+      top: 1966px;               
+      background: #FFFFFF;       
+      border: 1px solid #EBEDF8; 
+      border-radius: 16px;       
+      overflow: hidden;
+    }
+    .hobby-card-1 { left: 370px; }    /* 첫 번째 영화보기 위치 */
+    .hobby-card-2 { left: 770px; }    /* 두 번째 음악듣기 위치 */
+    .hobby-card-3 { left: 1170px; }   /* 세 번째 공연보기 위치 */
+
+    .hobby-card-title {
+      background: #4A86FF;       /* 취미 제목 배경색 */
+      color: #fff;               /* 취미 제목 글자색 */
+      font-size: 22px;           
+      font-weight: 700;
+      text-align: center;
+      padding: 18px 0;           /* 취미 제목 위아래 여백 */
+    }
+
+    .hobby-img-placeholder {
+      width: 100%;
+      height: 300px;             /* 이미지 영역 높이 */
+      background: linear-gradient(135deg, #c8cce8 0%, #a8b0d8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;           
+    }
+
+    /* 전체 페이지 높이 확보 */
+    .page-wrapper {
+      position: relative;
+      width: 1920px;
+      height: 2685px;
+      margin: 0 auto;
+      overflow-x: hidden;
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- NAV -->
+  <div class="nav">
+    <!-- 로고 -->
+    <div class="logo-box">
+      <img src="PORTFOLIO.svg" alt="PORTFOLIO."/>
+    </div>
+    <!-- 메뉴 -->
+    <ul class="nav-links">
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="#hobby">HOBBY</a></li>
+      <li><a href="#about">CONTACT</a></li> <!-- CONTACT 클릭 시 ABOUT 섹션으로 이동_연락처 정보: ABOUT) -->
+    </ul>
+  </div>
+
+  <!-- HERO: 파란 배경 -->
+  <div class="hero">
+    <!-- 메인 인사말 -->
+    <div class="hero-text">
+      안녕하세요!<br>
+      제 이름은 윤서희 입니다.<br>
+      소통하는 개발자가 되고 싶어요.
+    </div>
+  </div>
+
+  <!-- 콘텐츠 배경 영역 -->
+  <div class="content-bg"></div>
+
+  <!-- ABOUT 제목 -->
+  <div class="about-title" id="about">ABOUT</div>
+
+  <!-- 프로필 카드 -->
+  <div class="profile-card">
+    <!-- 프로필 사진로 교체 -->
+    <img src="프로필.jpg" class="profile-avatar" alt="프로필사진"/>
+    <!-- 이름 -->
+    <div class="profile-name">윤서희</div>
+    <!-- 연락처 -->
+    <ul class="profile-info">
+      <li><span>📞</span><span>010-8440-3811</span></li>
+      <li><span>✉️</span><span>helensh@naver.com</span></li>
+      <li><span>📍</span><span>서울특별시 강서구</span></li>
+    </ul>
+  </div>
+
+  <!-- ABOUT 정보 -->
+  <div class="about-info-area">
+    <div class="about-info">
+      <h3>EDUCATION</h3>
+      <p>한성대학교 컴퓨터공학부<br>2025.03~2029.02</p>
+    </div>
+    <div class="about-info">
+      <h3>SKILLS</h3>
+      <p>Python<br>C<br>C++<br>C#<br>unity<br>언리얼엔진<br>JavaScript</p>
+    </div>
+    <div class="about-info">
+      <h3>WORK</h3>
+      <p>프론트엔드 개발자</p>
+    </div>
+    <div class="about-info">
+      <h3>ACTIVITIES</h3>
+      <p>멋쟁이사자처럼 14기<br>Teamodd 운영진</p>
+    </div>
+  </div>
+
+  <!-- HOBBY -->
+  <div class="hobby-title" id="hobby">HOBBY</div>
+
+  <!-- 취미 1: 영화보기 -->
+  <div class="hobby-card hobby-card-1">
+    <div class="hobby-card-title">영화보기</div>
+    <img src="영화보기.jpeg" style="width:100%;height:300px;object-fit:cover;">
+  </div>
+
+  <!-- 취미 2: 음악듣기 -->
+  <div class="hobby-card hobby-card-2">
+    <div class="hobby-card-title">음악듣기</div>
+    <img src="음악듣기.jpeg" style="width:100%;height:300px;object-fit:cover;">
+  </div>
+
+  <!-- 취미 3: 공연보기 -->
+  <div class="hobby-card hobby-card-3">
+    <div class="hobby-card-title">공연보기</div>
+    <img src="공연보기.jpeg" style="width:100%;height:300px;object-fit:cover;">
+  </div>
