@@ -1,0 +1,42 @@
+@use '../index.scss' as *;
+
+.hero {
+  min-height: 800px;
+  background: $blue;
+  color: $white;
+  @include flex-center;
+  text-align: center;
+
+  h1 {
+    margin: 0;
+    font-size: 80px;
+    line-height: 1.5;
+    font-weight: 800;
+  }
+}
+
+@media (max-width: 1440px) {
+  .hero {
+    min-height: 560px;
+
+    h1 {
+      font-size: 56px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    min-height: 440px;
+
+    h1 {
+      font-size: 42px;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .hero h1 {
+    font-size: 32px;
+  }
+}
