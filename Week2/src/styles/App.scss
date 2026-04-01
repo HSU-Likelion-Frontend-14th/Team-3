@@ -1,0 +1,16 @@
+@use './index.scss' as *;
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.content-wrap {
+  background: $bg;
+  padding: 60px 0 342px;
+}
+
+@media (max-width: 1024px) {
+  .content-wrap {
+    padding: 48px 0 90px;
+  }
+}

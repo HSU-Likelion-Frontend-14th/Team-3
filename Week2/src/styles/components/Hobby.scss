@@ -1,0 +1,21 @@
+@use '../index.scss' as *;
+
+.section#hobby {
+  margin-top: 200px;
+}
+
+.hobby-grid {
+  margin-top: 60px;
+  @include grid-layout(repeat(3, minmax(0, 1fr)));
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .section#hobby {
+    margin-top: 100px;
+  }
+
+  .hobby-grid {
+    grid-template-columns: 1fr;
+  }
+}

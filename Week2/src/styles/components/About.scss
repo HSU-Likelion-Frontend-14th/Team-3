@@ -1,0 +1,62 @@
+@use '../index.scss' as *;
+
+.section {
+  @include responsive-width;
+}
+
+.section-title {
+  margin: 0;
+  text-align: center;
+  font-size: 70px;
+  line-height: normal;
+  color: $blue;
+  font-weight: 800;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+.about-layout {
+  margin-top: 59px;
+  @include grid-layout(380px 1fr);
+  gap: 40px;
+}
+
+.info-grid {
+  padding-top: 0;
+  @include grid-layout(repeat(2, minmax(0, 1fr)));
+  row-gap: 84px;
+  column-gap: 58px;
+}
+
+@media (max-width: 1440px) {
+  .section-title {
+    font-size: 58px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .info-grid {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    width: min(1180px, calc(100% - 32px));
+  }
+
+  .section-title {
+    font-size: 48px;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+    row-gap: 52px;
+  }
+}

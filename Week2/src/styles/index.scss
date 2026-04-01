@@ -1,0 +1,51 @@
+$blue: #4a86ff;
+$bg: #f3f5ff;
+$text-main: #000000;
+$text-muted: #626682;
+$text-soft: #484a64;
+$line: #ebedf8;
+$white: #ffffff;
+
+$font-family: 'Inter', 'Noto Sans KR', sans-serif;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin grid-layout($columns) {
+  display: grid;
+  grid-template-columns: $columns;
+}
+
+@mixin responsive-width {
+  width: min(1180px, calc(100% - 64px));
+  margin: 0 auto;
+}
+
+@mixin card-style {
+  border: 1px solid $line;
+  border-radius: 16px;
+  background: $white;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: $font-family;
+  color: $text-main;
+  background: $white;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

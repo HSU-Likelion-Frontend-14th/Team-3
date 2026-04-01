@@ -1,0 +1,116 @@
+@use '../index.scss' as *;
+
+.site-header {
+  height: 120px;
+  background: $white;
+}
+
+.inner {
+  @include responsive-width;
+}
+
+.header-inner {
+  height: 100%;
+  @include flex-center;
+  justify-content: flex-start;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 340px;
+  max-width: 340px;
+  min-width: 340px;
+  width: 340px;
+  height: 62px;
+  padding-left: 33px;
+  font-size: 44px;
+  line-height: 1;
+  font-weight: 800;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  letter-spacing: 0;
+  color: $blue;
+}
+
+.main-nav {
+  @include flex-center;
+  margin-left: 328px;
+  gap: 32px;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 58px;
+    padding: 12px 24px;
+    font-size: 28px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    letter-spacing: 0;
+    line-height: normal;
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $blue;
+    }
+  }
+
+  a:nth-child(1),
+  a:nth-child(2) {
+    width: 147px;
+  }
+
+  a:nth-child(3) {
+    width: 185px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .logo {
+    font-size: 32px;
+    min-width: auto;
+    max-width: none;
+    width: auto;
+    padding-left: 0;
+    flex: 0 1 auto;
+  }
+
+  .main-nav a {
+    font-size: 20px;
+    padding: 8px 14px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .site-header {
+    height: auto;
+    padding: 22px 0;
+  }
+
+  .header-inner {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .main-nav {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .logo {
+    font-size: 30px;
+  }
+
+  .main-nav {
+    gap: 8px;
+
+    a {
+      font-size: 14px;
+      padding: 8px;
+    }
+  }
+}

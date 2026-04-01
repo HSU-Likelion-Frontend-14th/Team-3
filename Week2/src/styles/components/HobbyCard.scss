@@ -1,0 +1,51 @@
+@use '../index.scss' as *;
+
+.hobby-card {
+  height: 377px;
+  @include card-style;
+  overflow: hidden;
+}
+
+.hobby-card h3 {
+  margin: 0;
+  height: 80px;
+  background: $blue;
+  color: $white;
+  @include flex-center;
+  font-size: 32px;
+  line-height: normal;
+  font-weight: 700;
+  border-radius: 16px 16px 0 0;
+}
+
+.hobby-card img {
+  display: block;
+  width: 300px;
+  height: 220px;
+  object-fit: cover;
+  margin: 37px auto 0;
+}
+
+@media (max-width: 1440px) {
+  .hobby-card h3 {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hobby-card {
+    height: auto;
+    padding-bottom: 24px;
+  }
+
+  .hobby-card h3 {
+    font-size: 24px;
+  }
+
+  .hobby-card img {
+    width: min(300px, calc(100% - 32px));
+    height: auto;
+    aspect-ratio: 15 / 11;
+    margin-top: 18px;
+  }
+}

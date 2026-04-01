@@ -1,0 +1,68 @@
+@use '../index.scss' as *;
+
+.profile-card {
+  height: 498px;
+  @include card-style;
+  padding: 30px 40px 24px;
+}
+
+.avatar {
+  width: 196px;
+  height: 200px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: #d7d9e6;
+}
+
+.profile-card h3 {
+  margin: 25px 0 15px;
+  text-align: center;
+  font-size: 40px;
+  line-height: normal;
+  font-weight: 700;
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-style: normal;
+  letter-spacing: 0;
+  color: $blue;
+}
+
+.contact-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  font-size: 16px;
+  line-height: normal;
+  font-weight: 500;
+  font-family: 'Inter', 'Noto Sans KR', sans-serif;
+  font-style: normal;
+  letter-spacing: 0;
+  color: $text-soft;
+}
+
+.contact-list li:last-child {
+  line-height: 1.7;
+}
+
+@media (max-width: 1024px) {
+  .profile-card {
+    width: min(380px, 100%);
+  }
+}
+
+@media (max-width: 640px) {
+  .profile-card {
+    height: auto;
+  }
+
+  .profile-card h3 {
+    font-size: 34px;
+  }
+}
