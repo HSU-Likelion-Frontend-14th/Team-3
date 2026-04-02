@@ -1,0 +1,24 @@
+.hobby-card {
+  width: 100%;
+  max-width: 23.75rem; 
+  background: #FFFFFF;
+  border: 1px solid #EBEDF8;
+  border-radius: 1rem;
+  overflow: hidden;
+  flex: 1 1 18.75rem; 
+
+  .hobby-card-title {
+    background: #4A86FF;
+    color: #fff;
+    font-size: 1.375rem; 
+    font-weight: 700;
+    text-align: center;
+    padding: 1.125rem 0;
+  }
+
+  .hobby-img {
+    width: 100%;
+    height: 18.75rem; 
+    object-fit: cover;
+  }
+}
