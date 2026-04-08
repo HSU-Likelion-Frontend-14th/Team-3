@@ -1,0 +1,150 @@
+/* 기본 폰트 적용 */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+body {
+  font-family: 'Pretendard', sans-serif;
+  background-color: #1a1a1c; /* 사진의 아주 어두운 배경색 */
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+  max-width: 800px;
+  padding: 40px 20px;
+}
+
+/* 상단 네비게이션 링크 (보라색 느낌) */
+nav {
+  margin-bottom: 40px;
+}
+
+nav a {
+  color: #a78bfa;
+  text-decoration: none;
+  margin-right: 15px;
+  font-size: 14px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* 자유 게시판 제목 */
+.board-title {
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 30px;
+  font-size: 20px;
+}
+
+/* 게시글 작성 / 목록 영역 테두리 박스 */
+.section-box {
+  border: 1px solid #444; /* 얇은 회색 테두리 */
+  padding: 25px;
+  margin-bottom: 20px;
+}
+
+/* 영역 제목 (가운데 정렬) */
+.section-title {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+  color: #ccc;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+/* 입력 폼 스타일 */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input, textarea {
+  background-color: #2c2c2e; /* 입력창 배경 */
+  border: 1px solid #555;
+  color: #fff;
+  padding: 12px;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #888;
+}
+
+textarea {
+  min-height: 80px;
+  resize: none;
+}
+
+/* 추가하기 버튼 (회색) */
+form button[type="submit"] {
+  background-color: #555;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+form button[type="submit"]:hover {
+  background-color: #666;
+}
+
+/* 게시글 목록 스타일 */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #444; /* 항목 사이 얇은 줄 */
+}
+
+/* 마지막 게시글은 밑줄 없애기 */
+li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* 게시글 제목과 내용 */
+li div h3 {
+  margin: 0 0 5px 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #ddd;
+}
+
+li div p {
+  margin: 0;
+  font-size: 13px;
+  color: #777; /* 내용은 조금 더 어둡게 */
+}
+
+/* 🚨 오리지널 빨간색 삭제 버튼 🚨 */
+li button {
+  background-color: #ff5252; /* 사진과 똑같은 연한 빨간색 */
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+li button:hover {
+  background-color: #ff3b3b;
+}
