@@ -1,9 +1,34 @@
+import { toast } from 'react-toastify';
+
 const BoardItem = ({id , title, content, onDelete}) => {
     const handleDelete = () => {
-        const shouldDelete = window.confirm('정말 이 게시글을 삭제하시겠습니까?');
-        if (shouldDelete) {
-            onDelete(id);
-        }
+        toast(
+            ({ closeToast }) => (
+                <div className="board-toast__content">
+                    <p className="board-toast__title">정말 이 게시글을 삭제하시겠습니까?</p>
+                    <div className="board-toast__actions">
+                        <button
+                            type="button"
+                            className="board-toast__confirm"
+                            onClick={() => {
+                                onDelete(id);
+                                closeToast();
+                            }}
+                        >
+                            삭제
+                        </button>
+                        <button type="button" className="board-toast__cancel" onClick={closeToast}>
+                            취소
+                        </button>
+                    </div>
+                </div>
+            ),
+            {
+                className: 'board-toast',
+                autoClose: false,
+                closeOnClick: false,
+            },
+        );
     };
 
   return (
