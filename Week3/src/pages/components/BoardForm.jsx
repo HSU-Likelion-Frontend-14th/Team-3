@@ -6,7 +6,7 @@ const BoardForm = ({ onAdd }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (title.trim('') || content.trim('')) {
+        if (!title.trim() || !content.trim()) {
             alert('제목과 내용을 입력해주세요.');
             return;
         }
@@ -24,9 +24,9 @@ const BoardForm = ({ onAdd }) => {
 
     return (
         <div>
-            <form className="board-form" onSubmit={handleSubmit}>
-                <div className='board-composer_head'>
-                    <span className='board-composer_avartar'>H</span>
+            <form className="board-composer" onSubmit={handleSubmit}>
+                <div className="board-composer__head">
+                    <span className="board-composer__avatar">H</span>
                     <div>
                         <h3>새 게시글 작성</h3>
                         <p>자유롭게 글을 작성해보세요!</p>
@@ -45,7 +45,7 @@ const BoardForm = ({ onAdd }) => {
                     onChange={(e) => setContent(e.target.value)}
                 />
 
-                <div className='board-composer_actions'>
+                <div className="board-composer__actions">
                     <span>작성된 글은 게시판에 바로 반영됩니다.</span>
                     <button type="submit">등록</button>
                 </div>
