@@ -1,4 +1,7 @@
 import React from 'react'
+import { toast } from 'react-toastify';
+
+const FORM_VALIDATION_TOAST_ID = 'board-form-validation';
 
 const BoardForm = ({ onAdd }) => {
     const [title, setTitle] = React.useState('');
@@ -7,7 +10,10 @@ const BoardForm = ({ onAdd }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!title.trim() || !content.trim()) {
-            alert('제목과 내용을 입력해주세요.');
+            toast.warning('제목과 내용을 입력해주세요.', {
+                toastId: FORM_VALIDATION_TOAST_ID,
+                autoClose: 1200,
+            });
             return;
         }
     const newPost = {

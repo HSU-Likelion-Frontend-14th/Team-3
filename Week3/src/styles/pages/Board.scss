@@ -173,6 +173,29 @@
     min-width: 0;
   }
 
+  &__delete-wrap {
+    margin-left: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__inline-warning {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 8px);
+    width: 260px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(29, 155, 240, 0.25);
+    background: #f5fbff;
+    color: #285a7a;
+    font-size: 0.83rem;
+    line-height: 1.4;
+    box-shadow: 0 8px 20px rgba(15, 20, 25, 0.08);
+    z-index: 4;
+  }
+
   button {
     margin-left: auto;
     padding: 8px 14px;
@@ -187,6 +210,10 @@
       border-color: rgba(29, 155, 240, 0.25);
       color: #1d9bf0;
     }
+  }
+
+  &__delete {
+    margin-left: 0;
   }
 }
 
