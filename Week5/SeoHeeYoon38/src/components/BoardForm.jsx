@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+/*이전 코드 업로드를 위한 주석*/
 const BoardForm = ({ addPost }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');

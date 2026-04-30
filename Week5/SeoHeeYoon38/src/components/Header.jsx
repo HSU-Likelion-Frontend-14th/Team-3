@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-
+/*이전 코드 업로드를 위한 주석*/
 function Header() {
   return (
     <header style={{ padding: '20px', display: 'flex', gap: '15px' }}>

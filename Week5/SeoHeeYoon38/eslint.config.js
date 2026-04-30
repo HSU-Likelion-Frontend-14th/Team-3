@@ -3,7 +3,7 @@ import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
-
+/*이전 코드 업로드를 위한 주석*/
 export default defineConfig([
   globalIgnores(['dist']),
   {
