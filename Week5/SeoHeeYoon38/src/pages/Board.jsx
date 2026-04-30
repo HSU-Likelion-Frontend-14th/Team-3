@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import BoardForm from "../components/BoardForm";
 import BoardList from "../components/BoardList";
 import BoardItem from "../components/BoardItem";
-
+/*코드 전체 업로드를 위한 주석*/
 function Board() {
   // 1. 초기 로드 시 localStorage에서 데이터 불러오기
   const [posts, setPosts] = useState(() => {
