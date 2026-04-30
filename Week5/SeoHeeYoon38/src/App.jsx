@@ -5,7 +5,7 @@ import Home from './pages/Home';
 import Board from './pages/Board';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-/*코드 전체 업로드를 위한 주석*/
+/*이전 코드 업로드를 위한 주석*/
 function App() {
   // 가입된 사용자 목록을 저장하는 상태
   const [registeredUsers, setRegisteredUsers] = useState([]);

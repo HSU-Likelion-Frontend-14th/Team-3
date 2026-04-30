@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-/*코드 전체 업로드를 위한 주석*/
+/*이전 코드 업로드를 위한 주석*/
 function Signup({ addUser }) {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
