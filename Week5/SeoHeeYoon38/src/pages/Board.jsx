@@ -4,16 +4,13 @@ import BoardList from "../components/BoardList";
 import BoardItem from "../components/BoardItem";
 
 function Board() {
-  // 1. localStorage에서 저장된 게시글 불러오기
+  // 1. 초기 로드 시 localStorage에서 데이터 불러오기
   const [posts, setPosts] = useState(() => {
-    const savedPosts = localStorage.getItem("session3-board-posts");
-    return savedPosts ? JSON.parse(savedPosts) : [
-      { id: 1, title: "첫 번째 글", content: "안녕하세요!" },
-      { id: 2, title: "두 번째 글", content: "안녕하세요!" }
-    ];
+    const saved = localStorage.getItem("session3-board-posts");
+    return saved ? JSON.parse(saved) : [];
   });
 
-  // 2. posts 배열이 바뀔 때마다 localStorage에 동기화
+  // 2. 데이터가 변경될 때마다 localStorage에 저장
   useEffect(() => {
     localStorage.setItem("session3-board-posts", JSON.stringify(posts));
   }, [posts]);
@@ -28,23 +25,15 @@ function Board() {
     <div style={{ padding: '20px' }}>
       <h2 style={{ textAlign: 'center', marginBottom: '30px' }}>자유 게시판</h2>
       
-      {/* 게시글 작성 영역 박스 */}
       <div style={{ border: '1px solid #444', padding: '25px', marginBottom: '20px', backgroundColor: '#1a1a1c' }}>
-        <h3 style={{ textAlign: 'center', fontSize: '18px', color: '#ccc', marginTop: 0, marginBottom: '20px' }}>
-          게시글 작성 영역 (BoardForm)
-        </h3>
+        <h3 style={{ textAlign: 'center', fontSize: '18px', color: '#ccc', marginTop: 0, marginBottom: '20px' }}>게시글 작성 영역</h3>
         <BoardForm addPost={addPost}/>
       </div>
 
-      {/* 게시글 목록 영역 박스 */}
       <div style={{ border: '1px solid #444', padding: '25px', backgroundColor: '#1a1a1c' }}>
-        <h3 style={{ textAlign: 'center', fontSize: '18px', color: '#ccc', marginTop: 0, marginBottom: '20px' }}>
-          게시글 목록 영역 (BoardList)
-        </h3>
+        <h3 style={{ textAlign: 'center', fontSize: '18px', color: '#ccc', marginTop: 0, marginBottom: '20px' }}>게시글 목록 영역</h3>
         {posts.length === 0 ? (
-          <ul style={{ listStyle: 'none', padding: 0 }}>
-            <li style={{ textAlign: 'center', color: '#888' }}>아직 작성된 글이 없습니다.</li>
-          </ul>
+          <p style={{ textAlign: 'center', color: '#888' }}>아직 작성된 글이 없습니다.</p>
         ) : (
           <BoardList>
             {posts.map((post) => (

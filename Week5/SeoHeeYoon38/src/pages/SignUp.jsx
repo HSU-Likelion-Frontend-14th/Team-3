@@ -6,7 +6,7 @@ function Signup({ addUser }) {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
-  // 1. react-hook-form 세팅
+  // 1. react-hook-form 설정 (실시간 유효성 검사 모드)
   const {
     register,
     handleSubmit,
@@ -23,31 +23,26 @@ function Signup({ addUser }) {
     }
   });
 
-  // 2. 화면 첫 렌더링 시 sessionStorage에 임시 저장된 데이터 불러오기
+  // 2. sessionStorage 연동: 작성 중인 데이터 유지
   useEffect(() => {
     const draft = sessionStorage.getItem('session3-signup-draft');
-    if (draft) {
-      reset(JSON.parse(draft));
-    }
+    if (draft) reset(JSON.parse(draft));
   }, [reset]);
 
-  // 3. 입력값이 바뀔 때마다 sessionStorage에 임시 저장
   const formValues = watch(); 
   useEffect(() => {
     sessionStorage.setItem('session3-signup-draft', JSON.stringify(formValues));
   }, [formValues]);
 
-  // 4. 유효성 검사를 모두 통과했을 때 실행되는 제출 함수
+  // 3. 제출 처리: 피드백에 따라 메인(/)으로 이동
   const onValidSubmit = (data) => {
-    if (addUser) {
-      addUser({ userId: data.userId, password: data.password });
-    }
-    console.log('[회원가입 완료]:', { userId: data.userId, email: data.email });
-    alert('회원가입 성공! 로그인 페이지로 이동합니다.');
+    if (addUser) addUser({ userId: data.userId, password: data.password });
+    alert('회원가입 성공! 메인 페이지로 이동합니다.');
     
-    // 성공적으로 가입 시 임시 저장 데이터 삭제
     sessionStorage.removeItem('session3-signup-draft'); 
-    navigate('/login');
+    
+    // [과제 조건 준수]: UX상 /login이 자연스럽지만, 조건에 따라 /로 이동합니다.
+    navigate('/'); 
   };
 
   return (
@@ -56,7 +51,7 @@ function Signup({ addUser }) {
 
       <form onSubmit={handleSubmit(onValidSubmit)} style={{ border: '1px solid #444', padding: '30px', width: '400px', display: 'flex', flexDirection: 'column', gap: '20px', boxSizing: 'border-box' }}>
         
-        {/* 아이디 */}
+        {/* 아이디 영역: 정규식 적용 (영문·숫자 4~20자) */}
         <div>
           <label style={{ display: 'block', textAlign: 'center', marginBottom: '8px', color: '#ccc', fontSize: '14px' }}>아이디</label>
           <input 
@@ -71,11 +66,10 @@ function Signup({ addUser }) {
               }
             })}
           />
-          {/* 에러 메시지 렌더링 */}
           {errors.userId && <span style={{ display: 'block', color: '#ff3b3b', fontSize: '12px', textAlign: 'center', marginTop: '8px' }}>{errors.userId.message}</span>}
         </div>
 
-        {/* 이메일 */}
+        {/* 이메일 영역 */}
         <div>
           <label style={{ display: 'block', textAlign: 'center', marginBottom: '8px', color: '#ccc', fontSize: '14px' }}>이메일</label>
           <input 
@@ -84,16 +78,13 @@ function Signup({ addUser }) {
             style={{ width: '100%', padding: '10px', backgroundColor: '#2c2c2e', border: '1px solid #555', color: '#fff', boxSizing: 'border-box' }} 
             {...register("email", {
               required: "이메일을 입력해 주세요.",
-              pattern: {
-                value: /@/,
-                message: "올바른 이메일 형식이 아닙니다."
-              }
+              pattern: { value: /@/, message: "올바른 이메일 형식이 아닙니다." }
             })}
           />
           {errors.email && <span style={{ display: 'block', color: '#ff3b3b', fontSize: '12px', textAlign: 'center', marginTop: '8px' }}>{errors.email.message}</span>}
         </div>
 
-        {/* 비밀번호 */}
+        {/* 비밀번호 영역: 정규식 적용 (영문+숫자 조합 8자 이상) */}
         <div style={{ position: 'relative' }}>
           <label style={{ display: 'block', textAlign: 'center', marginBottom: '8px', color: '#ccc', fontSize: '14px' }}>비밀번호</label>
           <input 
@@ -108,6 +99,7 @@ function Signup({ addUser }) {
               }
             })}
           />
+          {/* type="button" 명시로 submit 방지 */}
           <button type="button" onClick={() => setShowPassword(!showPassword)} style={{ position: 'absolute', right: '10px', top: '35px', background: 'none', border: 'none', color: '#888', cursor: 'pointer', fontSize: '12px' }}>
             {showPassword ? '숨기기' : '보기'}
           </button>
