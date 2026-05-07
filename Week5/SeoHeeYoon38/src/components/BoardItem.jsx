@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+/*이전 코드 업로드를 위한 주석*/
 const BoardItem = ({ post, deletePost, updatePost }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editContent, setEditContent] = useState(post.content);

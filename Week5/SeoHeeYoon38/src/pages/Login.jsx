@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-
+/*이전 코드 업로드를 위한 주석*/
 function Login({ registeredUsers }) {
   const navigate = useNavigate();
   const [userId, setUserId] = useState('');

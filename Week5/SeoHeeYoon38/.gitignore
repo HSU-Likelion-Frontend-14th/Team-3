@@ -11,7 +11,7 @@ node_modules
 dist
 dist-ssr
 *.local
-
+/*이전 코드 업로드를 위한 주석*/
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
