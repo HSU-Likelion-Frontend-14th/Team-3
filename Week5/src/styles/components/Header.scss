@@ -1,0 +1,129 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid #eff3f4;
+}
+
+.header__nav {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 14px 16px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.header__link {
+  position: relative;
+  width: 46px;
+  height: 42px;
+  padding: 0;
+  border-radius: 999px;
+  font-weight: 700;
+  color: #0f1419;
+  background: #f7f9f9;
+  border: 1px solid #eff3f4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition:
+    width 0.22s ease,
+    background-color 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease;
+
+  &:hover,
+  &:focus-visible {
+    width: 96px;
+    background: rgba(29, 155, 240, 0.1);
+    color: #1d9bf0;
+    border-color: rgba(29, 155, 240, 0.18);
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(29, 155, 240, 0.45);
+    outline-offset: 1px;
+  }
+
+  .header__link-icon {
+    position: absolute;
+    transition:
+      opacity 0.16s ease,
+      transform 0.16s ease;
+  }
+
+  .header__link-label {
+    opacity: 0;
+    transform: translateY(6px);
+    transition:
+      opacity 0.16s ease,
+      transform 0.16s ease;
+    white-space: nowrap;
+    font-size: 0.9rem;
+  }
+
+  &:hover .header__link-icon,
+  &:focus-visible .header__link-icon {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  &:hover .header__link-label,
+  &:focus-visible .header__link-label {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header__link--active {
+  width: 96px;
+  background: rgba(29, 155, 240, 0.1);
+  color: #1d9bf0;
+  border-color: rgba(29, 155, 240, 0.18);
+
+  .header__link-icon {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  .header__link-label {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .header__nav {
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .header__link {
+    width: auto;
+    padding: 0 14px;
+
+    .header__link-icon {
+      position: static;
+      opacity: 1;
+      transform: none;
+      margin-right: 8px;
+    }
+
+    .header__link-label {
+      opacity: 1;
+      transform: none;
+    }
+
+    &:hover,
+    &:focus-visible {
+      width: auto;
+    }
+  }
+
+  .header__link--active {
+    width: auto;
+  }
+}
